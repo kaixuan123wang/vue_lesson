@@ -1,6 +1,6 @@
 # todos
 
-> A Vue.js project
+> this is a todoList project
 
 ## Build Setup
 
