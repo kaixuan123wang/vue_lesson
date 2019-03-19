@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div class="app">
+		<h2>{{ msg }}</h2>
+		<p>{{ n }}</p>
+	</div>
+	<script>
+		let app = new Vue({
+			el:".app",
+			data(){
+				return {
+					msg:"这是一句话！！！"
+				}
+			},
+			computed:{
+				n(){
+					return this.msg.split('').reverse().join('');
+				}
+			}
+
+		})
+	</script>
+</body>
+</html>

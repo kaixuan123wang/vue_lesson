@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="..\node_modules\vue\dist\vue.min.js">
+	</script>
+</head>
+<body>
+	<div id="app">
+		<h2>{{ msg }}</h2>
+		<p>
+			{{ da }}
+		</p>
+	</div>
+	<script>
+		let app = new Vue({
+			el:"#app",
+			data:function(){
+				return {
+					msg:"这里要显示一句话"
+				}
+			},
+			computed:{
+				da:function(){
+					return this.msg.split("").reverse().join("");
+				}
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>渲染</title>
+	<script src="..\node_modules\vue\dist\vue.min.js"></script>
+	<style>
+		.color{
+			color: #f00;
+		}
+		.blue{
+			background: #0f0;
+		}
+	</style>
+</head>
+<body>
+	<div id="app" v-bind:class="col">
+		{{ message }}
+	</div>
+	<script type="text/javascript" charset="utf-8">
+		let app = new Vue({
+			el:'#app',
+			data : function(){
+				return {
+					message:'hello world!!',
+					col:{
+						color:false,
+						blue:true
+					}
+				}
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>待办事项</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+	<div class="app">
+    <header>
+        <div class="layout fx">
+            <h1>ToDoList</h1>
+            <form id="frm" target="hidden_frame" v-on:submit.prevent="">
+                <input type="text" name="" id="" placeholder="添加ToDoList" v-model="addValue" v-on:keyup.enter="add($event)">
+            </form>
+            
+        </div>
+    </header>
+    <section>
+        <div class="layout">
+            <div class="top">
+                <h2>正在进行</h2><span>{{counter[1]}}</span>
+            </div>
+            
+            <ul>
+                <li v-for="(todo,index) in todos"  v-if="!todo.isComplete">
+				<input type="checkbox" name="" id="" v-on:click="sel(index)" v-model="todo.isComplete">
+                {{index+1}}-{{todo.title}}
+				<button v-on:click="del(index)">删除</button>
+            	</li>
+            </ul>
+            <div class="top">
+                <h2>已经完成</h2><span>{{counter[0]}}</span>
+            </div>
+            
+                <ul>
+                    <li v-for="(todo,index) in todos" v-if="todo.isComplete">
+				<input type="checkbox" name="" id="" v-on:click="sel(index)" v-model="todo.isComplete">
+                {{index+1}}-{{todo.title}}
+				<button v-on:click="del(index)">删除</button>
+            	</li>
+                </ul>
+            
+        </div>
+    </section>
+    <footer>
+        <div class="layout">
+            <p>Copyright © 2019 todolist.cn</p>
+        </div>
+    </footer>
+</div>
+    <script src="storage.js"></script>
+    <script>
+    let vm = new Vue({
+        el: ".app",
+        data() {
+            return {
+            	addValue:"",
+            	newTodos:[
+            	],
+                todos: [],
+            }
+        },
+        computed:{
+            counter(){
+                let c = [0,0];
+                this.todos.forEach(function(item,index){
+                    if(item.isComplete){
+                        c[0] += 1;
+                    }else{
+                        c[1] += 1;
+                    }
+                });
+                // for(let i=0;i<this.todos.length;i++){
+                //     if(this.todos[i].isComplete){
+                //         c[0] += 1;
+                //     }else{
+                //         c[1] += 1;
+                //     }
+                // }
+                
+                return c;
+            }
+        },
+        methods:{
+        	sel(index){
+        		this.todos[index].isComplete=!this.todos[index].isComplete;
+                // localStorage.setItem("todos",JSON.stringify(this.todos));
+                storage.set("todos",this.todos);
+        	},
+        	del(index){
+        		this.todos.splice(index,1);
+                // localStorage.setItem("todos",JSON.stringify(this.todos));
+                storage.set("todos",this.todos);
+        	},
+        	add(e){
+        		if(this.addValue == ""){
+        			return;
+        		}else{
+        		let max = 0;
+        		for(let i = 0;i<this.todos.length;i++){
+        			if(this.todos[i].id > max){
+        				max = this.todos[i].id
+        			}
+        		}
+        		max += 1;
+        		this.todos.push({id:max,title:this.addValue,isComplete:false});
+        		this.addValue = "";
+                // localStorage.setItem("todos",JSON.stringify(this.todos));
+                storage.set("todos",this.todos);
+        	}},
+            
+        },
+        mounted(){
+                // let todos=JSON.parse(localStorage.getItem("todos"));
+                var todos = storage.get("todos");
+                if(todos){
+                    this.todos=todos;
+                }
+                
+            }
+    })
+    </script>
+</body>
+
+</html>

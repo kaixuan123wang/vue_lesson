@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="..\vue.js"></script>
+</head>
+<body>
+	<div class="demo">
+		<p>{{ click }}</p>
+		<button v-on:click="add()">请单击</button>
+	</div>
+	<script>
+		let app = new Vue({
+			el:".demo",
+			data:function(){
+				return {
+					click:0
+
+				}
+			},
+			methods:{
+				add:function(){
+					this.click++;
+				}
+			}
+		})
+	</script>
+</body>
+</html>

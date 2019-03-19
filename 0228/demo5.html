@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div class="demo">
+		<h2>{{n}}</h2>
+		<button @click="add()"></button>
+	</div>
+	<script>
+		let app = new Vue({
+			el:".demo",
+			data(){
+				return{
+					n:1
+				}
+			},
+			methods:{
+				add(){
+					this.n++;
+				}
+			}
+
+		})
+	</script>
+</body>
+</html>

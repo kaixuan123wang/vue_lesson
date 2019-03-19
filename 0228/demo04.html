@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../node_modules/vue/dist/vue.js"></script>
+	<style>
+		.color{
+			color: red;
+		}
+		.blue{
+			background: #f00;
+		}
+	</style>
+</head>
+<body>
+	<div id="app" v-text="msg" :class="col">
+		{{ msg }}
+	</div>
+	<script>
+		let app = new Vue({
+			el:"#app",
+			data(){
+				return {
+					msg:"123",
+					col:{
+						color:false,
+						blue:true
+					}
+				}
+			}
+		})
+	</script>
+</body>
+</html>
