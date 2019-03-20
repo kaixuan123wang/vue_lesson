@@ -2,7 +2,7 @@
 	<ul>
 		<li v-for="(item,index) in todos" :key="item.id">
 			<div class="left">
-				<input type="checkbox" name="" id=""  v-model="item.isComplete">
+				<input type="checkbox" name="" id=""  v-model="item.isComplete" v-on:click="$emit('is',item.id)">
 				{{item.id}}.{{item.title}}
 			</div>
 			<div class="right">
@@ -13,15 +13,7 @@
 </template>
 <script>
 	export default {
-		props:["todos"],
-		data(){
-			return{
-
-			}
-		},
-		methods:{
-			
-		}
+		props:["todos"]
 	}
 </script>
 <style>

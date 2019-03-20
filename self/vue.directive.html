@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义指令</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div v-wang="color">{{num}}</div>
+        <button @click="add">ADD</button>
+    </div>
+    <p>
+        <button onclick="unbind()">解绑</button>
+    </p>
+    <script>
+        function unbind(){
+            app.$destroy();
+        }
+        Vue.directive("wang",function(el,binding){
+            el.style = "color:"+binding.value;
+            console.log(binding);
+            console.log(binding.name);
+        });
+        var app = new Vue({
+            el:"#app",
+            data(){
+                return{
+                    num:10,
+                    color:'green'
+                }
+            },
+            methods:{
+                add(){
+                    this.num++;
+                }
+            }
+
+        })
+    </script>
+</body>
+</html>

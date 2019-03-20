@@ -1,0 +1,44 @@
+1.V-on:submit.prevent=””
+阻止表单提交
+2.V-on:keyup.enter=”add()”
+当enter按键按下时执行add函数
+3.V-bind不仅可以绑定属性还可以决定父组件传子组件的变量名,tood1是一个过滤器
+V-bind:todos=”todo1”
+4.子组件无法擅自更改父组件传入的数据，
+父组件处理子组件上传的数据：
+V-on:del=”remove($event)”
+5.过滤器filter的使用方法
+Todos1(){
+Return this.todos.filter(function(item)){
+If(item.isComplete){
+Return item;
+}
+}
+}
+将数组todos每个元素进行过滤返回对象元素中属性isComplete为真的元素
+
+6.父组件引入子组件的方法：
+Import 组件名 from 组件地址;
+Components:{
+“自定义标签名”:组件名
+}
+引入之后就可以像正常标签一样使用
+其他知识点：
+1.向数组中添加元素：数组名.push(元素内容);
+2.删除数组中指定位置的元素：数组名.splice(索引,删除个数)
+Es6语法：
+1.在数组中查找指定元素：数组名.findIndex(func)
+2.箭头函数：(参数) => (数据处理)
+3.将数据抛出：
+Export default{数据}
+4.引入数据：
+Import 组件名 from 组件地址
+
+
+子组件知识点：
+5.要想接受父组件传入的数据需要使用：
+Props:[“数据名”]
+
+6.对父元素传入的参数进行修改或删除：
+V-on:click=”$emit(‘父元素提供的方法名’,’向父元素上传的参数’)”
+

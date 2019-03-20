@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>其他指令</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>v-pre</h1>
+        <div v-pre>{{msg}}原样显示不做渲染</div>
+        <h1>v-cloak</h1>
+        <div v-cloak>渲染完成后才显示</div>
+        <h1>v-once</h1>
+        <div>
+            <div v-once>{{message}}只会渲染一次</div>
+            <input type="text" v-model="message">
+            <div>{{message}}</div>
+        </div>
+    </div>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data(){
+                return {
+                    msg:"hello world",
+                    message:"123"
+                }
+            },
+        })
+    </script>
+</body>
+</html>
