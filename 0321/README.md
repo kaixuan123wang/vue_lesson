@@ -1,6 +1,6 @@
-# todos
+# wang
 
-> this is a todoList project
+> A Vue.js project
 
 ## Build Setup
 
