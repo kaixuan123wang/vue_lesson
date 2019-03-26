@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>实验双击文字变输入框</title>
+    <script src="vue.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .hid{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="item in todos">
+            <h2 v-text="item.title" v-bind:class="current==item.id?'hid':''" v-on:dblclick="change(item.id)"></h2>
+            <p v-bind:class="current!=item.id?'hid':''"><input type="text" name="word" v-model="item.title" v-on:keyup.enter="change2()"></p>
+        </li>
+    </ul>
+</div>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data(){
+                return{
+                    todos:[
+                        {id:0,title:"this is one"},
+                        {id:1,title:"this is two"}
+                    ],
+                    current:-1
+                }
+            },
+            methods:{
+                change(item){
+                    this.current = item;
+                },
+                change2(){
+                    this.current = -1;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

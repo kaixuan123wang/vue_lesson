@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>computed</title>
+    <script src="self/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="n1">+<input type="text" v-model="n2">=<input type="text" v-model="sum">
+</div>
+<script>
+    var app = new Vue({
+        el:"#app",
+        data(){
+            return {
+                n1:0,
+                n2:0
+            }
+        },
+        computed:{
+            sum(){
+                return parseInt(this.n1)+parseInt(this.n2);
+            }
+        }
+    })
+</script>
+</body>
+</html>

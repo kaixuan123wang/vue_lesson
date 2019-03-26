@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>component属性</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>component属性</h1>
+        <wang :here="address"></wang>
+    </div>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+              address:"jiLin"
+            },
+            components:{
+                "wang":{
+                    template:`<div>王来自 {{here}}</div>`,
+                    props:["here"]
+//                    props我理解为接收外部提供的数据
+                }
+            }
+        })
+    </script>
+</body>
+</html>

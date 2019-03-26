@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>component外部组件引用</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <h1>component外部组件使用</h1>
+    <wang></wang>
+</div>
+    <script>
+        var addre = {
+            template:`<div>来自吉林</div>`
+        }
+        var wang = {
+            template:`<div>我是王<addre></addre></div>`,
+            components:{
+                "addre":addre
+            }
+        }
+        var app = new Vue({
+            el:"#app",
+            components:{
+                "wang":wang
+            }
+        })
+//        注意事项：当子组件引用其他组件时，应该用一个标签将所有标签包含在一起，即template:`<div>....</div>`
+//        自定义标签不能与现有H5标签重复
+    </script>
+
+</body>
+</html>

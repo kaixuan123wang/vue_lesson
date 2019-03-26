@@ -1,7 +1,7 @@
 <template>	
 <ul>
 
-<li v-for="item in todos" :key="item.id">
+<li v-for="item in todos" :key="item.id" v-bind:class="item.isComplete?'old':''">
 	<div class="left">
 		<input type="checkbox" name="" id="" v-model="item.isComplete" v-on:click="$emit('sel',item.id)">
 		{{item.id}}.{{item.title}}
@@ -51,5 +51,9 @@ ul li .right a{
 	background: #ccc;
 	color: #fff;
 	margin-right: 10px;
+}
+.old{
+        text-decoration:line-through;
+        color:#A9A9A9;
 }
 </style>

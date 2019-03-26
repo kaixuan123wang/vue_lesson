@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>全局操作vue.set</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--{{count}}-->
+        <ul>
+            <li v-for="item in arr">{{item}}</li>
+        </ul>
+
+    </div>
+    <p>
+        <button onclick="add()">add</button>
+    </p>
+    <script>
+        function add(){
+            //Vue.set(outData,'count',2);
+            //app.count++;
+            //outData.count++;
+            Vue.set(app.arr,1,'dd');
+        }
+        var outData = {
+            count:1,
+            goods:'car',
+            arr:['aa','bbb','ccc']
+        }
+        var app = new Vue({
+            el:"#app",
+            data:outData
+        })
+    </script>
+</body>
+</html>
+<!--当虚拟DOM通过数组下标更改值的时候vue无法监听到，需要使用vue.set-->
