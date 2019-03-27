@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>变异方法的使用</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <h1>变异方法的使用</h1>
+    <ul>
+        <li v-for="item in text">{{item}}</li>
+    </ul>
+    <input type="text" name="content" v-model="addValue">
+    <button v-on:click="addTop()">置顶发表</button>
+    <button v-on:click="addBot()">结尾发表</button>
+    <button v-on:click="delTop()">删除置顶内容</button>
+    <button v-on:click="delBot()">删除末尾内容</button>
+</div>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data(){
+                return{
+                    text:["123","456"],
+                    addValue:""
+                }
+            },
+            methods:{
+                addTop(){
+                    this.text.unshift(this.addValue);
+                },
+                addBot(){
+                    this.text.push(this.addValue);
+                },
+                delTop(){
+                    this.text.shift();
+                },
+                delBot(){
+                    this.text.pop();
+                }
+            }
+
+        })
+    </script>
+</body>
+</html>
