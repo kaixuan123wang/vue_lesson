@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>阻止默认行为和冒泡</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<!--
+    捕获（父级先执行）:capture
+    阻止冒泡的两种方法：.stop和.self
+    阻止默认操作：.prevent
+-->
+<div id="app" v-on:click.self="box" :style="{border:'solid 2px red'}">
+    <a href="http://baidu.com" v-on:click.prevent="links">百度</a>
+</div>
+<script>
+    var app = new Vue({
+        el:"#app",
+        methods:{
+            links(){
+                alert("123");
+            },
+            box(){
+                alert("456");
+            }
+        }
+    })
+</script>
+</body>
+</html>

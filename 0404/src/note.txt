@@ -1,0 +1,76 @@
+题目:个人信息管理系统设计
+
+一.开发准备
+(一)知识
+1.组件
+2.数据绑定
+3.数据传递
+4.事件的设计
+5.vue实例选项
+    (1)name
+    (2)data
+    (3)methods
+    (4)components
+    (5)mounted
+    (6)props
+    (7)computed
+    (8)watch
+
+(二)环境搭建
+1.安装脚手架(vue-cli)
+2.安装webpack
+3.创建个人信息管理项目
+
+(三)开发流程
+1.创建跟组件
+<template>
+    <div id="app">
+    </div>
+</template>
+<script>
+export default{
+    name:"app",
+    data(){},
+    methods:{},
+    mounted(){}
+}
+</script>
+<style>
+
+</style>
+
+2.创建子组件
+
+二.开发实战
+1.在src下建立components
+2.在src中建立根组件或使用App.vue,建立根组件内容
+3.在components下建立子组件BaseTable.vue
+4.功能实现
+(1)添加
+给三个表单元素添加双向数据绑定属性model="value"
+在定义部分指定初值(data部分)
+将添加的值推送到数据this.people中(this.people.push())
+(2)删除
+在子组件的模板中添加删除事件@click传入参数name
+在子组件定义中添加方法(methods中):this.$emit('del',name);
+在父组件中进行监听del事件(v-on:del="'del',$event")
+在父组件中完成删除操作
+(3)排序
+在子组件中定义排序事件
+在定义中添加方法
+在父组件中进行排序监听sort
+在父组件定义中实现排序
+(4)搜索
+添加事件input
+获取关键字:e.target.value/双向数据绑定
+搜索实现:this.people.forEach((item)=>{if(item.name.indexOf(value) > -1){this.vpeople.push(item)}})
+
+测试
+
+附:
+数组操作
+Array.forEach(func)遍历数组
+Array.filter(func)
+Array.map()
+Array.find()
+Array.findIndex()
