@@ -1,0 +1,102 @@
+题目:vue过度效果及动画
+
+一.制作过程
+1.使用内置组件transition
+(1)不加属性
+设置样式时要使用前缀:v-enter/v-enter-to/v-enter-active
+(2)加name属性
+设置样式时要使用:name="demo"作为前缀,如:demo-enter-active
+
+2.设计不同显示状态
+(1)v-if
+(2)v-show
+(3)加载时出现
+(4)组件切换
+
+3.制作css样式
+(1)transition
+(2)animation
+(3)@keyframse 动画名{}
+
+二.效果实现
+1.结构部分
+<div id="app">
+    <button @click="shows">显隐效果</button>
+    <transition name="xf">
+        <div class="dim" v-if="show">
+            <p>
+                ssssssssssssssssssss
+            </p>
+        </div>
+    </transition>
+  </div>
+2.脚本部分
+data () {
+    return {
+      show:true
+    }
+  },
+    methods:{
+    shows(){
+        this.show = !this.show;
+    }
+3.样式部分
+.dim{
+    position:relative;
+    width:500px;
+    height:300px;
+    margin:50px auto;
+    perspective:1300px; /*透视点*/
+}
+p{
+    position:relative;
+    width:300px;
+    height:200px;
+    transform-style:preserve-3d;    /*保留3d效果*/
+}
+.xf-enter-active{
+    animation:sl 1s;
+    
+}
+.xf-leave-active{
+    animation:se 1s;
+}
+@keyframes sl{
+    0%{
+        transform:scale(0);
+    }
+    50%{
+        transform:scale(1.5) rotateX(150deg);
+    }
+    100%{
+        transform:scale(1);
+    }
+}
+@keyframes se{
+    0%{
+        transform:scale(1);
+        opacity:1;
+    }
+    100%{
+        transform:scale(0) rotateZ(180deg);
+        opacity:0;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

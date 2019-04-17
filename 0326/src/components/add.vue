@@ -15,7 +15,7 @@
             return{
                 name:"",
                 age:"",
-                sex:""
+                sex:"男"
             }
         },
         methods:{
