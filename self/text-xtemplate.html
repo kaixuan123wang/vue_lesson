@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="hdcms">
+        <hd-news></hd-news>
+    </div>
+    <script type="text/x-template" id="hdNews">
+        <div>
+            <li v-for="(v,k) in news">
+                {{v.title}}
+                <button v-on:click="del(k)">删除</button>
+            </li>
+        </div>
+    </script>
+    <script>
+        // var list={
+        //     news:[
+        //         {title:'hdcms'},
+        //         {title:'hdphp'},
+        //     ]
+        // }
+        var hdNews = {
+            template:"#hdNews",
+            data(){
+                return {
+                    news:[
+                        {title:'hdcms'},
+                        {title:'hdphp'},
+                    ]
+                };
+            },
+            methods:{
+                del(k){
+                    this.news.splice(k,1);
+                }
+            }
+        };
+        new Vue({
+            el:'#hdcms',
+            components:{hdNews},
+            data(){
+                return {
+
+                }
+            }
+        });
+    </script>
+</body>
+</html>

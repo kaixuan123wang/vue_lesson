@@ -1,0 +1,22 @@
+题目:vue-resource获取服务端数据
+
+1.安装vue-resource插件
+npm install vue-resource --save-dev
+
+2.引用vue-resource库文件.js
+在main.js中
+import VueResource from "vue-resource";
+
+4.在main.js中使用VueResource
+Vue.use(VueResource);
+
+3.在组件中使用
+this.$http.get(uri).then((res)=>{},(error)=>{});
+
+uri:网址或API接口
+
+res:成功取得的数据
+
+error:报出的错误
+
+5.在模板中绑定需要的数据
