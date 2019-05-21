@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件中的数据传递</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="hdcms">
+        <hd-news hd="hdphp" cms="hello" :show-del-button="true" :news="news"></hd-news>
+    </div>
+    <script type="text/x-template" id="hdNews">
+        <div>
+            {{hd}}-{{cms}}-{{showDelButton}}
+            <li v-for="(v,k) in news">
+                {{v.title}}
+                <button @click="del(k)" v-if="showDelButton">删除</button>
+            </li>
+        </div>
+    </script>
+    <script>
+        var hdNews = {
+            template:"#hdNews",
+            props:['hd','cms','showDelButton','news'],
+            data(){
+                return {
+
+                };
+            }
+        };
+        new Vue({
+            el:'#hdcms',
+            components:{hdNews},
+            data(){
+                return {
+                    news:[
+                        {title:"123"},
+                        {title:"456"}
+                    ]
+                }
+            }
+        });
+    </script>
+</body>
+</html>

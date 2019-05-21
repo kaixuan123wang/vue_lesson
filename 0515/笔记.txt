@@ -1,0 +1,49 @@
+vue init webpack projecy 选项详解
+1.配置环境
+    node
+    npm
+    npm i -g @vue/cli
+2.vue初始化基于webpack的project项目(项目不能用大写字母)
+    vue init webpack project
+3.选项详解
+    1.项目名称,如果不需要就直接回车,此项目名不能使用大写
+        Project name (project):
+    2.项目描述,如果不需要就直接回车
+        Project description(A Vue.js project):
+    3.项目作者,默认计算机用户名
+        Author(xxx):
+    4.构建方式(暂且这么解释)
+        建议选择Runtime+Compiler:recommended for most users
+        这里推荐使用1选项,适合大多数用户的
+        vue build (Use arrow keys)
+        // 1. (译：运行+编译：被推荐给大多数用户)
+        > Runtime + Compiler:recommended for most users
+
+        // 2.(译：只运行大约6KB比较轻量的压缩文件，但只允许模板（或任何VUE特定HTML）。
+        //	VUE文件需要在其他地方呈现函数。翻译不精准，意思大概是选择该构建方式对文件大小有要求)
+        > Runtime-only:about 6KB lighter min+gzip,but templates (or any Vue-specific            HTML) are ONLY 
+        allowed in .vue files-render functions are required elsewhere
+
+    5.安装vue的路由插件,需要就选y否则就n
+        install vue-router?
+    6.是否使用ESLint检测你的代码?
+        ESLint 是一个语法规则和代码风格的检查工具，可以用来保证写出语法正确、风格统一的代码。
+建议选择 ‘N’ 因为选择 ‘Y’ 在做调试项目时,控制台会有很多 黄色警告 提示格式不规范,但其实并不影响项目
+        Use ESLint to lint your code?
+    7.是否安装单元测试?(暂不详细介绍)
+        建议选N
+        Setup unit tests?
+    8.是否安装E2E测试框架NightWatch(E2E,也就是End To End,就是所谓的'用户真实场景')
+        建议选N
+        Setup e2e tests with Nightwatch(Y/n)?
+    9.项目创建后是否要为你运行npm install ?
+        Should we run 'npm install' for you after the project has been created?
+
+        // 使用npm
+        yes,use npm
+        
+        // 使用yarn
+        yes,use yarn
+        
+        // 自己操作
+        no,I will handle that myself
